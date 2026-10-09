@@ -1,262 +1,783 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0a1423">
-<meta name="description" content="Life Launch Coach helps you build mindset, practical skills, career direction and cultural understanding.">
-<title>Life Launch Coach — Your Next Chapter Starts Here</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1423">
+  <meta name="description" content="Life Launch Coach helps you build mindset, practical skills, financial direction, heritage awareness, and confident growth.">
+  <title>Life Launch Coach | Learn. Apply. Grow.</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg: #091321;
+      --panel: #101f32;
+      --panel-strong: #14263b;
+      --gold: #e9c777;
+      --gold-soft: #f5dfa0;
+      --text: #f3f4f6;
+      --muted: #b8c4d3;
+      --line: rgba(233, 199, 119, 0.2);
+      --green: #8fcfb1;
+      --max: 1180px;
+      --radius: 20px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.7 "Segoe UI", Arial, sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, input, select, textarea { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 84px 0; }
+    .section.alt { background: linear-gradient(180deg, rgba(20,38,59,0.28), rgba(20,38,59,0.1)); }
+    .center { text-align: center; }
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      color: var(--gold-soft);
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    h1, h2, h3, h4, h5 { margin-top: 0; }
+    .topline {
+      background: #0d1b2c;
+      border-bottom: 1px solid var(--line);
+      color: var(--gold-soft);
+      text-align: center;
+      font-size: .92rem;
+      padding: 10px 14px;
+    }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(9,19,33,0.9);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #091321; font-weight: 800; box-shadow: var(--shadow);
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-text strong { font-size: 1rem; letter-spacing: .08em; }
+    .brand-text small { font-size: .68rem; color: var(--muted); letter-spacing: .12em; }
+    .nav { display: flex; align-items: center; gap: 22px; color: var(--muted); }
+    .nav a { transition: .2s ease; }
+    .nav a:hover { color: var(--gold-soft); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 14px 20px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: .2s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #101821;
+      box-shadow: 0 12px 22px rgba(233,199,119,0.22);
+    }
+    .btn-light {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .hero-copy h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 640px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+    .trust-row {
+      display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px;
+      color: var(--gold-soft); font-weight: 600;
+    }
+    .trust-row span {
+      padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+    }
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(20,38,59,0.95), rgba(16,31,50,0.95));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+    }
+    .mini-badge {
+      display: inline-block; padding: 8px 12px; border-radius: 999px;
+      border: 1px solid rgba(233,199,119,0.3); color: var(--gold-soft);
+      background: rgba(233,199,119,0.08); font-size: .75rem; font-weight: 700;
+    }
+    .hero-panel h3 { margin: 18px 0 12px; font-size: 1.8rem; }
+    .bullet-list { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 12px; }
+
+    .section-head { margin-bottom: 30px; }
+    .section-head h2 { margin: 0; font-size: clamp(2rem, 3vw, 3.2rem); line-height: 1.12; }
+
+    .card-grid, .pricing-grid, .steps-grid, .notice-grid, .featured-grid {
+      display: grid; gap: 22px;
+    }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .steps-grid { grid-template-columns: repeat(3, 1fr); }
+    .featured-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .info-card, .step-box, .notice-box, .pricing-card, .contact-card, .stone-card, .payment-card {
+      background: rgba(17,30,44,0.96);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .info-card, .step-box, .notice-box { padding: 24px; }
+    .card-icon { font-size: 2rem; margin-bottom: 8px; }
+    .info-card h3, .step-box h3, .notice-box h3 { margin: 0 0 10px; }
+    .info-card p, .step-box p, .notice-box p, .legal-content p { color: var(--muted); }
+
+    .pricing-card {
+      position: relative;
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 100%;
+    }
+    .pricing-card.featured { border-color: rgba(233,199,119,0.42); background: linear-gradient(180deg, rgba(18,24,32,0.96), rgba(17,30,44,0.96)); }
+    .pill {
+      align-self: flex-start;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(143,207,177,0.08);
+      border: 1px solid var(--line);
+      color: var(--green);
+      font-size: .75rem;
+      font-weight: 700;
+    }
+    .pill-gold {
+      background: rgba(233,199,119,0.12);
+      color: var(--gold-soft);
+      border-color: rgba(233,199,119,0.3);
+    }
+    .pricing-card h3 { margin: 0; font-size: 1.8rem; letter-spacing: -0.04em; }
+    .pricing-card ul { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 8px; flex: 1; }
+    .price-tag {
+      font-size: 2.1rem; font-weight: 800; letter-spacing: -0.05em;
+      color: var(--gold-soft);
+    }
+    .price-tag small { font-size: .8rem; color: var(--muted); }
+    .offer-banner {
+      display: inline-block; padding: 8px 10px; border-radius: 10px;
+      background: rgba(233,199,119,0.14); border: 1px solid rgba(233,199,119,0.32);
+      color: var(--gold-soft); font-weight: 700; font-size: .8rem;
+    }
+    .cta-box {
+      text-align: center;
+      background: linear-gradient(180deg, rgba(22,33,49,0.94), rgba(18,24,32,0.94));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 42px 28px;
+      box-shadow: var(--shadow);
+    }
+    .cta-box h2 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.2rem); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; align-items: start; }
+    .contact-points { display: grid; gap: 18px; margin-top: 28px; }
+    .contact-item {
+      padding: 18px; background: rgba(17,30,44,0.7); border: 1px solid var(--line); border-radius: 14px;
+    }
+    .contact-item strong { display: block; margin-bottom: 4px; color: var(--gold-soft); }
+    .contact-item a, .contact-item p { color: var(--muted); margin: 0; }
+    .contact-card { padding: 24px; }
+    .contact-card h3 { margin: 0 0 18px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .contact-card label {
+      display: grid; gap: 8px; color: var(--muted); margin-bottom: 0;
+      font-size: .95rem;
+    }
+    .contact-card input, .contact-card select, .contact-card textarea {
+      width: 100%; padding: 14px 14px; border-radius: 12px; border: 1px solid var(--line);
+      background: #0d1b2c; color: var(--text); outline: none;
+    }
+    .contact-card input:focus, .contact-card select:focus, .contact-card textarea:focus {
+      border-color: rgba(233,199,119,0.6); box-shadow: 0 0 0 2px rgba(233,199,119,0.08);
+    }
+    .full-width { grid-column: 1 / -1; }
+    .full-width-btn { width: 100%; margin-top: 18px; }
+    .form-status { margin-top: 12px; color: var(--gold-soft); font-size: .92rem; }
+    .payment-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .payment-card {
+      display: flex; flex-direction: column; gap: 10px; padding: 22px 16px; color: var(--text); text-align: left;
+    }
+    .payment-icon {
+      width: 52px; height: 52px; display: grid; place-items: center;
+      border-radius: 16px; color: #0d1b2c; background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      font-weight: 800; font-size: 1.25rem;
+    }
+    .payment-card strong { font-size: 1.2rem; }
+    .payment-card small { color: var(--muted); }
+    .stone-grid { display: grid; gap: 18px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .stone-card { padding: 20px; }
+    .stone-card .gem { font-size: 2rem; margin-bottom: 8px; }
+    .stone-card h3 { margin: 0 0 8px; }
+    .stone-card p { margin: 0; color: var(--muted); }
+    .site-footer { padding: 40px 0 80px; border-top: 1px solid var(--line); background: #0b1728; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr .8fr .8fr 1.1fr; gap: 26px; }
+    .site-footer h4 { margin: 0 0 14px; color: var(--gold-soft); }
+    .site-footer a { display: block; color: var(--muted); margin-bottom: 8px; }
+    .site-footer p { color: var(--muted); }
+    @media (max-width: 980px) {
+      .hero-grid, .contact-layout, .pricing-grid, .payment-grid, .stone-grid, .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav { display: none; }
+      .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .section { padding: 68px 0; }
+      .hero-grid, .contact-layout, .pricing-grid, .payment-grid, .stone-grid, .footer-grid, .form-grid { grid-template-columns: 1fr; }
+      .header-actions { width: 100%; }
+      .header-actions .btn { flex: 1; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<div class="topline" data-en="Start small. Learn consistently. Build something real. <strong>Begin with ₹99.</strong>" data-mni="ꯑꯍꯥꯟꯕꯗꯥ ꯑꯄꯤꯛꯄꯥ ꯑꯣꯏꯅꯥ ꯍꯧꯗ ꯉꯥꯛꯀꯣ꯫ <strong>ꯆꯪꯕ ₹99 ꯗꯒꯤ ꯍꯧꯕꯤꯌꯨ꯫</strong>"><strong>Begin with ₹99.</strong></div>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#home" aria-label="Life Launch Coach home"><span class="mark">LL</span><span>LIFE LAUNCH COACH<small>LEARN · APPLY · GROW</small></span></a>
-    <nav class="navlinks" id="navlinks">
-      <a href="#paths" data-en="Learning Paths" data-mni="ꯇꯝꯕꯒꯤ ꯃꯔꯃꯗꯥ">Learning Paths</a>
-      <a href="#heritage" data-en="Meitei Heritage" data-mni="ꯃꯩꯇꯩ ꯂꯥꯏꯅꯤꯡ">Meitei Heritage</a>
-      <a href="#store" data-en="Digital Store" data-mni="ꯗꯤꯖꯤꯇꯦꯜ ꯁ꯭ꯇꯣꯔ">Digital Store</a>
-      <a href="#community" data-en="Community" data-mni="ꯀꯃꯨꯅꯤꯇꯤ">Community</a>
-      <a href="#contact" data-en="Contact" data-mni="ꯄꯥꯎ ꯐꯥꯑꯣꯅꯕ">Contact</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="lang" id="langBtn" type="button" aria-label="Switch language">ꯃꯩꯇꯩ</button>
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation">☰</button>
+  <div class="topline">Start small. Learn consistently. Build something real. <strong>Begin with ₹99.</strong></div>
+
+  <header class="site-header">
+    <div class="wrap site-header-inner">
+      <a class="brand" href="#home" aria-label="Life Launch Coach home">
+        <span class="brand-mark">LL</span>
+        <span class="brand-text">
+          <strong>LIFE LAUNCH COACH</strong>
+          <small>LEARN · APPLY · GROW</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#paths">Learning Paths</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#heritage">Heritage</a>
+        <a href="#library">Library</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-outline" href="mailto:chingkheinganbairengbam573@gmail.com">Email</a>
+        <a class="btn btn-gold" href="https://wa.me/919383107798?text=Hello%20Life%20Launch%20Coach%2C%20I%20want%20to%20know%20more%20about%20your%20packages." target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
     </div>
-  </div>
-</header>
-<main>
-<section class="hero" id="home">
- <div class="wrap hero-grid">
-  <div>
-   <div class="eyebrow" data-en="A learning platform for your next chapter" data-mni="ꯅꯍꯥꯛꯀꯤ ꯑꯅꯧꯕ ꯃꯇꯝꯒꯤ ꯇꯝꯕ ꯃꯐꯝ">A learning platform for your next chapter</div>
-   <h1 data-en="Your future begins with <span>your decisions.</span>" data-mni="ꯅꯍꯥꯛꯀꯤ ꯍꯧꯖꯤꯛꯀꯤ ꯃꯇꯝ ꯍꯧꯗꯣꯛꯂꯤ <span>ꯅꯍꯥꯛꯀꯤ ꯈꯟꯕꯗꯒꯤ꯫</span>">Your future begins with <span>your decisions.</span></h1>
-   <p class="lead" data-en="Build a stronger mindset, discover practical skills, explore your cultural roots and take the next step with purpose. You don't need to do everything today. Start with one small step." data-mni="ꯃꯥꯏꯟꯗ ꯑꯃꯁꯨꯡ ꯊꯕꯛꯇꯥ ꯀꯔꯤꯌꯔ ꯉꯥꯛ ꯊꯧꯔꯥꯡ ꯇꯞꯄꯤ꯫">Build a stronger mindset, discover practical skills, explore your cultural roots and take the next step with purpose. You don't need to do everything today. Start with one small step.</p>
-   <div class="hero-actions"><a class="btn primary" href="#paths" data-en="Explore Learning Paths ↗" data-mni="ꯇꯝꯕꯒꯤ ꯃꯔꯃꯗꯥ ꯌꯦꯡꯉꯨ ↗">Explore Learning Paths ↗</a></div>
-   <div class="trustline"><span data-en="Beginner-friendly" data-mni="ꯍꯧꯔꯤꯕꯁꯤꯡꯒꯤꯗꯃꯛ">Beginner-friendly</span><span data-en="Practical learning" data-mni="ꯊꯕꯛꯇꯥ ꯇꯝꯕ">Practical learning</span><span data-en="Cultural rooted" data-mni="ꯂꯥꯏꯅꯤꯡꯗꯥ ꯃꯥꯏꯊꯣꯡ">Cultural rooted</span></div>
-  </div>
-  <aside class="hero-card"><div class="orbit"><div class="sun"></div></div><h3 data-en="Small steps. Real progress." data-mni="ꯑꯄꯤꯛꯄꯥ ꯊꯧꯔꯥꯡ꯫ ꯑꯁꯦꯡꯕ ꯃꯥꯏꯄꯥꯛ">Small steps. Real progress.</h3><p data-en="Every expert was once a beginner. We meet you where you are." data-mni="ꯑꯦꯝ ꯄꯦꯠꯁꯤ ꯃꯜ ꯍꯧꯔꯤꯕ ꯑꯁꯤ ꯎ꯫">Every expert was once a beginner. We meet you where you are.</p></aside>
- </div>
-</section>
+  </header>
 
-<section class="section" id="paths">
-<div class="wrap">
-<div class="section-head">
-<div class="eyebrow" data-en="Choose your direction" data-mni="ꯅꯍꯥꯛꯀꯤ ꯃꯈꯜ ꯈꯟꯕꯤꯌꯨ">Choose your direction</div>
-<h2 data-en="Your Learning Paths" data-mni="ꯅꯍꯥꯛꯀꯤ ꯇꯝꯕꯒꯤ ꯃꯔꯃ">Your Learning Paths</h2>
-</div>
- <div class="grid">
-  <article class="card"><div class="icon">◉</div><h3 data-en="Mind & Soul" data-mni="ꯃꯥꯏꯟꯗ ꯑꯃꯁꯨꯡ ꯁꯣꯜ">Mind & Soul</h3><p data-en="Self-awareness, confidence, habits, focus and emotional intelligence." data-mni="ꯂꯥꯏꯠ ꯊꯧꯕ ꯑꯃꯁꯨꯡ ꯊꯨꯡ ꯉꯥꯛ ꯁꯦꯝꯕꯤ">Self-awareness, confidence, habits, focus and emotional intelligence.</p></article>
-  <article class="card"><div class="icon">↗</div><h3 data-en="Career & Business" data-mni="ꯀꯔꯤꯌꯔ ꯑꯃꯁꯨꯡ ꯕꯤꯖꯅꯦꯁ">Career & Business</h3><p data-en="Career planning, digital skills, freelancing and entrepreneurship." data-mni="ꯀꯔꯤꯌꯔ ꯃꯇꯨꯡ ꯑꯃꯁꯨꯡ ꯗꯤꯖꯤꯇꯦꯜ ꯀꯥꯃ">Career planning, digital skills, freelancing and entrepreneurship.</p></article>
-  <article class="card"><div class="icon">✦</div><h3 data-en="Heritage & Spirituality" data-mni="ꯂꯥꯏꯅꯤꯡ ꯑꯃꯁꯨꯡ ꯑꯆꯧꯕ">Heritage & Spirituality</h3><p data-en="Cultural stories, traditions, values and spiritual growth." data-mni="ꯂꯥꯏꯅꯤꯡ ꯃꯇꯝꯗꯥ ꯂꯩꯕ ꯈꯦꯡꯅꯕ ꯃꯉꯥꯏ">Cultural stories, traditions, values and spiritual growth.</p></article>
-  <article class="card"><div class="icon">◎</div><h3 data-en="Community & Workshops" data-mni="ꯀꯃꯨꯅꯤꯇꯤ ꯑꯃꯁꯨꯡ ꯋꯥꯔꯛꯁꯣꯞ">Community & Workshops</h3><p data-en="Learning circles, group discussions, live sessions and peer support." data-mni="ꯀꯃꯨꯅꯤꯇꯤ ꯄꯨꯠꯇꯨ ꯑꯃꯁꯨꯡ ꯊꯤꯈꯪꯕ">Learning circles, group discussions, live sessions and peer support.</p></article>
- </div>
-</div>
-</section>
+  <main id="home">
+    <section class="section">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">A learning platform for your next chapter</div>
+          <h1>Your future begins with your decisions.</h1>
+          <p class="lead">Build a stronger mindset, discover practical skills, understand your heritage, and take the next step with purpose. Start small, stay consistent, and create real momentum in life, career, and personal growth.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#pricing">View All Packages</a>
+            <a class="btn btn-outline" href="#contact">Book a Consultation</a>
+          </div>
+          <div class="trust-row">
+            <span>Beginner-friendly</span>
+            <span>Practical learning</span>
+            <span>Heritage rooted</span>
+          </div>
+        </div>
 
-<section class="section alt" id="heritage">
-<div class="wrap two-col">
-<div>
-<div class="eyebrow" data-en="Rooted in culture. Open to learning." data-mni="ꯂꯥꯏꯅꯤꯡꯗꯥ ꯃꯥꯏꯊꯣꯡꯕ ꯑꯃꯁꯨꯡ ꯇꯝꯕꯗꯥ ꯎꯒꯠꯄ">Rooted in culture. Open to learning.</div>
-<h2 data-en="Why Meitei Heritage Matters" data-mni="ꯃꯩꯇꯩ ꯂꯥꯏꯅꯤꯡ ꯈꯣꯏ ꯃꯊꯧ">Why Meitei Heritage Matters</h2>
-<p data-en="Our platform celebrates Meitei culture while helping you grow beyond it. Learn your roots. Build your future. Contribute to your community." data-mni="ꯃꯩꯇꯩ ꯂꯥꯏꯅꯤꯡ ꯑꯩ ꯂꯃꯆꯥꯇꯥ ꯑꯃꯁꯨꯡ ꯅꯍꯥꯛꯀꯤ ꯐꯒꯠꯄ ꯁꯦꯝꯕꯤ꯫">Our platform celebrates Meitei culture while helping you grow beyond it. Learn your roots. Build your future. Contribute to your community.</p>
-</div>
-<div></div>
-</div>
-</section>
+        <aside class="hero-panel">
+          <span class="mini-badge">STARTER ₹99 / month</span>
+          <h3>Small steps. Real progress.</h3>
+          <ul class="bullet-list">
+            <li>Mindset and behavioural tools for everyday progress</li>
+            <li>Health guidance and practical self-care support</li>
+            <li>Personality insight and life direction support</li>
+            <li>Built for students, professionals, and future-focused learners</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-<section class="section" id="how">
-<div class="wrap">
-<div class="section-head">
-<div class="eyebrow" data-en="Your growth loop" data-mni="ꯅꯍꯥꯛꯀꯤ ꯐꯒꯠꯄꯒꯤ ꯃꯔꯃꯗꯥ">Your growth loop</div>
-<h2 data-en="Learn. Apply. Grow." data-mni="ꯇꯝꯕ꯫ ꯊꯕꯛꯇꯧꯕ꯫ ꯐꯒꯠꯄ꯫">Learn. Apply. Grow.</h2>
-</div>
-<div class="steps">
-<div class="step"><div class="step-number">01</div><h3 data-en="Learn" data-mni="ꯇꯝꯕ">Learn</h3><p data-en="Consume bite-sized lessons on topics that matter to you." data-mni="ꯅꯍꯥꯛꯀꯤ ꯈꯉꯕ ꯃꯇꯝ ꯇꯝꯕ">Consume bite-sized lessons on topics that matter to you.</p></div>
-<div class="step"><div class="step-number">02</div><h3 data-en="Apply" data-mni="ꯊꯕꯛꯇꯧꯕ">Apply</h3><p data-en="Practice immediately with real-world projects and challenges." data-mni="ꯁꯟꯗ ꯍꯥꯔꯥ ꯊꯕꯛꯇꯥ ꯇꯞꯄꯤ">Practice immediately with real-world projects and challenges.</p></div>
-<div class="step"><div class="step-number">03</div><h3 data-en="Grow" data-mni="ꯐꯒꯠꯄ">Grow</h3><p data-en="Track progress, celebrate wins and connect with your community." data-mni="ꯅꯍꯥꯛꯀꯤ ꯐꯒꯠꯄ ꯂꯩꯇꯨꯡ ꯊꯖꯤꯡ ꯂꯝ꯫">Track progress, celebrate wins and connect with your community.</p></div>
-</div>
-</div>
-</section>
+    <section class="section alt" id="paths">
+      <div class="wrap">
+        <div class="section-head center">
+          <div class="eyebrow">Choose your direction</div>
+          <h2>Your Learning Paths</h2>
+        </div>
 
-<section class="section alt" id="store">
-<div class="wrap">
-<div class="section-head">
-<div class="eyebrow" data-en="Digital learning store" data-mni="ꯗꯤꯖꯤꯇꯦꯜ ꯇꯝꯕꯒꯤ ꯁ꯭ꯇꯣꯔ">Digital learning store</div>
-<h2 data-en="Start Your Learning Journey" data-mni="ꯅꯍꯥꯛꯀꯤ ꯇꯝꯕꯒꯤ ꯈꯣꯏ ꯍꯧꯕꯤꯌꯨ">Start Your Learning Journey</h2>
-</div>
- <div class="product-grid">
-  <article class="product"><span class="pill free-label" data-en="Free resource" data-mni="ꯐ꯭ꯔꯤ ꯔꯤꯁꯣꯔꯁ">Free resource</span><h3 data-en="7-Day Decision Reset" data-mni="ꯗꯦ ꯇꯨꯅꯀꯥ ꯃꯦꯌꯐ ꯐꯕꯒꯥ">7-Day Decision Reset</h3><p data-en="Email course to help you clarify your goals and priorities." data-mni="ꯅꯍꯥꯛꯀꯤ ꯄꯨꯞꯄ ꯈꯉꯕ ꯃꯇꯝ ꯌꯦꯡꯉꯨ꯫">Email course to help you clarify your goals and priorities.</p><button class="btn secondary" onclick="scrollToContact()" data-en="Get Free ↗" data-mni="ꯐ꯭ꯔꯤ ꯆꯥꯕꯤ ↗">Get Free ↗</button></article>
-  <article class="product"><span class="pill" data-en="Starter offer" data-mni="ꯍꯧꯕꯒꯤ ꯑꯣꯐꯔ">Starter offer</span><h3 data-en="Life Launch Starter Kit" data-mni="Life Launch ꯍꯧꯕꯒꯤ ꯃꯒ">Life Launch Starter Kit</h3><p data-en="4 learning modules, 20+ lessons, resources and community access." data-mni="ꯇꯝꯕꯒꯤ ꯐꯡ ꯑꯃꯗꯃꯛ ꯑꯃꯁꯨꯡ ꯀꯃꯨꯅꯤꯇꯤ ꯐꯪ"><strong data-en="Only ₹99" data-mni="ꯇꯗ ₹99">Only ₹99</strong> • 4 learning modules, 20+ lessons, resources and community access.</p><button class="btn primary" onclick="scrollToContact()" data-en="Get Started ↗" data-mni="ꯍꯧꯕ ↗">Get Started ↗</button></article>
-  <article class="product"><span class="pill" data-en="Popular" data-mni="ꯑꯔꯥꯃ ꯃꯐꯝ">Popular</span><h3 data-en="Health & Wellness Intensive" data-mni="ꯀꯩ ꯑꯃꯁꯨꯡ ꯍꯧꯕ ꯉꯥꯛ ꯃꯇꯨꯡ">Health & Wellness Intensive</h3><p data-en="Comprehensive guide to mental health, physical wellness and lifestyle design." data-mni="ꯀꯩ ꯉꯥꯛ ꯑꯃꯁꯨꯡ ꯍꯧꯕꯒꯤ ꯄꯤꯠꯂꯛ"><strong data-en="Only ₹149" data-mni="ꯇꯗ ₹149">Only ₹149</strong> • Comprehensive guide to mental health, physical wellness and lifestyle design.</p><button class="btn primary" onclick="scrollToContact()" data-en="Enroll Now ↗" data-mni="ꯑꯀꯥ ꯀꯤꯕꯪ ↗">Enroll Now ↗</button></article>
- </div>
-<p class="hint" style="text-align:center;margin-top:20px" data-en="💳 Payment note: Buttons lead to contact form. Connect a trusted payment gateway (Razorpay, Stripe) for live transactions." data-mni="💳 ꯁꯥꯡꯕꯒꯤ ꯊꯖꯕ: ꯊꯕꯛ ꯊꯤꯈꯪꯕ ꯐꯣꯔꯂ ꯍꯥ꯫ Razorpay ꯑꯃꯁꯨꯡ ꯆꯥꯏꯄ ꯇꯝꯕ꯫">💳 Payment note: Buttons lead to contact form. Connect a trusted payment gateway (Razorpay, Stripe) for live transactions.</p>
-</div>
-</section>
+        <div class="card-grid three-col">
+          <article class="info-card">
+            <div class="card-icon">🧠</div>
+            <h3>Mind &amp; Soul</h3>
+            <p>Build confidence, emotional clarity, stronger habits, and personal direction with practical mindset support.</p>
+          </article>
 
-<section class="section" id="community">
-<div class="wrap two-col">
-<div>
-<div class="eyebrow" data-en="Build alongside others" data-mni="ꯑꯇꯣꯞꯄꯁꯤꯡꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯁꯦꯝꯕꯤ">Build alongside others</div>
-<h2 data-en="Join the Community" data-mni="ꯀꯃꯨꯅꯤꯇꯤ ꯐꯪ ꯎ">Join the Community</h2>
-<p data-en="You're not alone. Connect with peers, share your journey, find accountability partners and grow together." data-mni="ꯅꯍꯥꯛ ꯑꯦꯝ ꯎꯄꯀꯤ ꯌꯌꯨ꯫ ꯑꯇꯣꯞꯄꯁꯤꯡꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯇꯤꯀꯨ ꯑꯃꯁꯨꯡ ꯐꯒꯠꯂꯕ꯫">You're not alone. Connect with peers, share your journey, find accountability partners and grow together.</p>
-</div>
-<div></div>
-</div>
-</section>
+          <article class="info-card">
+            <div class="card-icon">💼</div>
+            <h3>Career &amp; Wealth</h3>
+            <p>Learn how to think clearly, plan better, grow financially, and create sustainable opportunities.</p>
+          </article>
 
-<section class="section alt" id="contact">
-<div class="wrap">
-<div class="section-head">
-<div class="eyebrow" data-en="Start a conversation" data-mni="ꯋꯥꯔꯤ ꯁꯥꯅꯕ ꯍꯧꯕꯤꯌꯨ">Start a conversation</div>
-<h2 data-en="Get in Touch" data-mni="ꯄꯥꯎ ꯐꯥꯑꯣꯅꯕ">Get in Touch</h2>
-</div>
-<form id="contactForm" class="contact-form">
-<div class="form-group">
-<label for="name" data-en="Your Name" data-mni="ꯅꯍꯥꯛꯀꯤ ꯃꯤꯟ">Your Name</label>
-<input type="text" id="name" name="name" required>
-</div>
-<div class="form-group">
-<label for="email" data-en="Email Address" data-mni="ꯑ꯭ꯀꯥ">Email Address</label>
-<input type="email" id="email" name="email" required>
-</div>
-<div class="form-group">
-<label for="interest" data-en="What interests you?" data-mni="ꯀꯤ ꯌꯥꯟ ꯉꯥꯛ ꯌꯔꯨ?">What interests you?</label>
-<select id="interest" name="interest" required>
-<option value="" data-en="-- Select --" data-mni="-- ꯈꯟꯕꯤ --">-- Select --</option>
-<option data-en="Learning paths" data-mni="ꯇꯝꯕꯒꯤ ꯃꯔꯃ">Learning paths</option>
-<option data-en="Pricing & Plans" data-mni="ꯁꯥꯡꯕ">Pricing & Plans</option>
-<option data-en="Community" data-mni="ꯀꯃꯨꯅꯤꯇꯤ">Community</option>
-<option data-en="Partnership" data-mni="ꯏꯁꯣꯛ ꯌꯕ">Partnership</option>
-<option data-en="Other" data-mni="ꯑꯇꯩ">Other</option>
-</select>
-</div>
-<div class="form-group">
-<label for="message" data-en="Your Message" data-mni="ꯅꯍꯥꯛꯀꯤ ꯊꯥꯔ">Your Message</label>
-<textarea id="message" name="message" rows="5" required></textarea>
-</div>
-<button type="submit" class="btn primary" data-en="Send Message" data-mni="ꯊꯥꯔ ꯄꯣꯛꯀꯣ">Send Message</button>
-<div id="formMessage" style="margin-top:12px;color:var(--gold);font-size:.95rem"></div>
-</form>
-</div>
-</section>
+          <article class="info-card">
+            <div class="card-icon">✨</div>
+            <h3>Heritage &amp; Spirituality</h3>
+            <p>Reconnect with Meitei roots, culture, and spiritual practices while building a healthier modern life.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section class="section" id="faq">
-<div class="wrap">
-<div class="section-head">
-<div class="eyebrow" data-en="Good to know" data-mni="ꯈꯉꯕ ꯃꯊꯧ">Good to know</div>
-<h2 data-en="A few clear promises" data-mni="ꯑꯆꯧꯕ ꯄ꯭ꯔꯥꯃꯤꯁ">A few clear promises</h2>
-</div>
-<div class="promises">
-<div class="promise"><h3 data-en="💯 Beginner-Friendly" data-mni="💯 ꯍꯧꯔꯤꯕꯁꯤꯡꯒꯤꯗꯃꯛ">💯 Beginner-Friendly</h3><p data-en="No prerequisites. No gatekeeping. Lessons designed for absolute beginners." data-mni="ꯂꯣꯟꯈꯪꯕ ꯁꯕ꯫ ꯇꯇ꯳ꯠ ꯀꯇ꯬ꯆꯪ꯫">No prerequisites. No gatekeeping. Lessons designed for absolute beginners.</p></div>
-<div class="promise"><h3 data-en="🎯 Practical Focus" data-mni="🎯 ꯊꯕꯛꯇꯥ ꯊꯖꯕ">🎯 Practical Focus</h3><p data-en="Every lesson includes real projects. Theory + Practice = Results." data-mni="ꯈꯀꯈꯉꯕ ꯃꯇꯝ ꯍꯤꯏ꯫ ꯃꯪꯕ ꯑꯃꯁꯨꯡ ꯊꯕꯛꯇꯧꯕ = ꯃꯥꯏꯄꯥꯛ꯫">Every lesson includes real projects. Theory + Practice = Results.</p></div>
-<div class="promise"><h3 data-en="🌍 Culturally Rooted" data-mni="🌍 ꯂꯥꯏꯅꯤꯡꯗꯥ ꯃꯥꯏꯊꯣꯡ">🌍 Culturally Rooted</h3><p data-en="We celebrate Meitei values. Growth without losing yourself." data-mni="ꯃꯩꯇꯩ ꯃꯁꯥ ꯌꯦꯡꯉꯨ꯫ ꯅꯍꯥꯛ ꯎꯪꯕ ꯃꯦꯢ ꯐꯒꯠꯄ꯫">We celebrate Meitei values. Growth without losing yourself.</p></div>
-</div>
-</div>
-</section>
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="section-head center">
+          <div class="eyebrow">Simple pricing</div>
+          <h2>Choose the package that matches your next step</h2>
+        </div>
 
-<section class="section alt cta-section" id="conclusion">
-<div class="wrap">
-<div class="cta">
-<h2 data-en="Change the world 🌎 one step at a time" data-mni="ꯃ꯭ꯌꯞꯄꯥ 🌎 ꯑꯄꯤꯛꯄꯥ ꯊꯧꯔꯥꯡ ꯁꯪ ꯂꯥꯛꯀꯅꯤ">Change the world 🌎 one step at a time</h2>
-<p data-en="Your next chapter can start today. No matter where you are, your decisions matter. Let's grow together." data-mni="ꯅꯍꯥꯛꯀꯤ ꯑꯅꯧꯕ ꯃꯇꯝ ꯉꯁꯤ ꯍꯧꯕ ꯌꯥꯏ꯫ ꯅꯍꯥꯛꯀꯤ ꯈꯟꯕ ꯃꯊꯧ꯫ ꯑꯊꯧꯕ ꯇꯝꯕꯒꯥ ꯇꯝꯕ꯫">Your next chapter can start today. No matter where you are, your decisions matter. Let's grow together.</p>
-<a href="#store" class="btn primary" data-en="Explore Our Offerings ↗" data-mni="ꯑꯦꯃꯛ ꯈꯉꯕ ↗">Explore Our Offerings ↗</a>
-</div>
-</div>
-</section>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <span class="pill">Starter</span>
+            <h3>Starter</h3>
+            <div class="price-tag">₹99 <small>/ month</small></div>
+            <ul>
+              <li>Mind and behaviour changing ideas</li>
+              <li>Health e-book</li>
+              <li>Pokpa numit guidance for personality, behaviour, and potential</li>
+              <li>Career and future direction insight</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact">Get Starter</a>
+          </article>
 
-<section class="section" id="legal">
-<div class="wrap">
-<div class="legal-grid">
-<div>
-<h3 data-en="📋 Terms & Conditions" data-mni="📋 ꯄ꯭ꯔꯥꯃ">📋 Terms & Conditions</h3>
-<p data-en="By using Life Launch Coach, you agree to our terms. Our platform is designed to help you learn and grow. Users are responsible for their own progress and any decisions made based on our content. We are not liable for external outcomes. All content is copyright protected." data-mni="ꯂꯥꯏꯐ ꯂꯣꯞꯆ ꯀꯣꯆ ꯊꯕꯛꯇꯧꯕ ꯐꯪꯗꯕ ꯇꯒꯥ ꯆꯪꯈꯜꯂꯤ꯫ ꯊꯨꯒꯥ ꯇꯝꯕꯒꯤ ꯃꯐꯝ ꯑꯆꯧ꯫">By using Life Launch Coach, you agree to our terms. Our platform is designed to help you learn and grow. Users are responsible for their own progress and any decisions made based on our content. We are not liable for external outcomes. All content is copyright protected.</p>
-<a href="#" data-en="Read Full Terms ↗" data-mni="ꯎꯡ ꯃꯛ ꯄꯣꯛ ↗">Read Full Terms ↗</a>
-</div>
-<div>
-<h3 data-en="💰 Refund Policy" data-mni="💰 ꯌꯥꯟ ꯐꯣꯀ">💰 Refund Policy</h3>
-<p data-en="We offer a 7-day money-back guarantee on all purchases. If you're not satisfied with your learning experience, contact us within 7 days of purchase for a full refund. No questions asked. Refunds are processed within 5-7 business days." data-mni="ꯉꯁꯤ ꯈꯀꯈꯉꯕ ꯐꯪꯗꯥ 7-ꯗꯦ ꯌꯥꯟ ꯐꯣꯀꯀꯤ ꯐꯄꯂꯨ꯫ ꯁꯥꯡ ꯐꯪꯕ ꯃꯇꯝ ꯌꯥꯟ ꯐꯣꯇ ꯌꯨ꯫">We offer a 7-day money-back guarantee on all purchases. If you're not satisfied with your learning experience, contact us within 7 days of purchase for a full refund. No questions asked. Refunds are processed within 5-7 business days.</p>
-<a href="#contact" data-en="Request a Refund ↗" data-mni="ꯌꯥꯟ ꯐꯣꯀ ꯐꯪꯕ ↗">Request a Refund ↗</a>
-</div>
-<div>
-<h3 data-en="🔒 Privacy Policy" data-mni="🔒 ꯎꯃꯪ ꯄꯣꯂꯤꯁꯤ">🔒 Privacy Policy</h3>
-<p data-en="Your data is yours. We don't sell or share your personal information. All data is encrypted and stored securely. For detailed information about how we handle your data, please review our full privacy policy." data-mni="ꯅꯍꯥꯛꯀꯤ ꯈꯥꯟꯕ ꯑꯇ꯲ꯥ ꯑꯇ꯲ꯥ꯫ ꯊꯣꯛ ꯄꯣꯛ ꯌꯣꯏ꯫ ꯆꯏ ꯁꯇꯡꯕ꯫">Your data is yours. We don't sell or share your personal information. All data is encrypted and stored securely. For detailed information about how we handle your data, please review our full privacy policy.</p>
-<a href="#" data-en="View Privacy Policy ↗" data-mni="ꯎꯃꯪ ꯈꯉꯕ ↗">View Privacy Policy ↗</a>
-</div>
-</div>
-</div>
-</section>
-</main>
+          <article class="pricing-card featured">
+            <span class="pill pill-gold">Popular</span>
+            <h3>Pro</h3>
+            <div class="price-tag">₹499 <small>/ month</small></div>
+            <div class="offer-banner">LIMITED TIME OFFER: ₹149 only for 1 month</div>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Free health treatment and care guidance</li>
+              <li>Natural remedies for sinus, kidney, BP, diabetes, liver, nerve issues</li>
+              <li>Personalized health consultation</li>
+            </ul>
+            <a class="btn btn-gold" href="#contact">Choose Pro</a>
+          </article>
 
-<footer class="footer">
-<div class="wrap">
-<div class="footer-grid">
-<div>
-<a class="brand" href="#home"><span class="mark">LL</span><span>LIFE LAUNCH COACH<small>LEARN · APPLY · GROW</small></span></a>
-<p data-en="Building mindset, skills and purpose. Rooted in culture." data-mni="ꯃꯥꯏꯟꯗ ꯑꯃꯁꯨꯡ ꯀꯥꯝ ꯇꯕꯤ꯫">Building mindset, skills and purpose. Rooted in culture.</p>
-</div>
-<div>
-<h4 data-en="Quick Links" data-mni="ꯐꯍꯥꯛ ꯂꯤꯟꯀ">Quick Links</h4>
-<a href="#paths" data-en="Learning Paths" data-mni="ꯇꯝꯕꯒꯤ ꯃꯔꯃ">Learning Paths</a>
-<a href="#store" data-en="Store" data-mni="ꯁ꯭ꯇꯣꯔ">Store</a>
-<a href="#community" data-en="Community" data-mni="ꯀꯃꯨꯅꯤꯇꯤ">Community</a>
-<a href="#contact" data-en="Contact" data-mni="ꯄꯥꯎ ꯐꯥꯑꯣꯅꯕ">Contact</a>
-</div>
-<div>
-<h4 data-en="Legal" data-mni="ꯂꯤꯒꯦꯜ">Legal</h4>
-<a href="#legal" data-en="Terms & Conditions" data-mni="ꯄ꯭ꯔꯥꯃ">Terms & Conditions</a>
-<a href="#legal" data-en="Refund Policy" data-mni="ꯌꯥꯟ ꯐꯣꯀ">Refund Policy</a>
-<a href="#" data-en="Privacy Policy" data-mni="ꯎꯃꯪ ꯄꯣꯂꯤꯁꯤ">Privacy Policy</a>
-</div>
-<div>
-<h4 data-en="Connect" data-mni="ꯌꯣꯏ">Connect</h4>
-<a href="mailto:chingkheinganbairengbam573@gmail.com" data-en="Email" data-mni="ꯑ꯭ꯀꯥ">Email</a>
-<a id="waLink" href="#contact" aria-label="WhatsApp contact" data-en="WhatsApp" data-mni="WhatsApp">WhatsApp ↗</a>
-<p style="font-size:.9rem;margin-top:12px" data-en="© 2024 Life Launch Coach. All rights reserved." data-mni="© 2024 Life Launch Coach. ꯂꯥꯡꯈꯥ ꯈꯐꯛꯇꯨꯡ ꯊꯦꯠꯂꯤ꯫">© 2024 Life Launch Coach. All rights reserved.</p>
-</div>
-</div>
-</div>
-</footer>
+          <article class="pricing-card">
+            <span class="pill">Exclusive</span>
+            <h3>Exclusive</h3>
+            <div class="price-tag">₹5,999 <small>/ month</small></div>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Everything in Pro</li>
+              <li>Career guidance</li>
+              <li>Financial education</li>
+              <li>Exclusive 3 e-books</li>
+              <li>Income-building roadmap</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact">Get Exclusive</a>
+          </article>
 
-<script>
-(function(){
- const langBtn=document.getElementById('langBtn');
- const menuBtn=document.getElementById('menuBtn');
- const nav=document.getElementById('navlinks');
- let lang='en';
- 
- function setLanguage(next){
-   lang=next;
-   document.documentElement.lang=lang==='en'?'en':'mni';
-   document.querySelectorAll('[data-en][data-mni]').forEach(el=>{
-     el.innerHTML=el.getAttribute(lang==='en'?'data-en':'data-mni');
-   });
-   langBtn.textContent=lang==='en'?'ꯃꯩꯇꯩ':'English';
-   langBtn.setAttribute('aria-label',lang==='en'?'Switch to Meiteilon':'Switch to English');
- }
- 
- langBtn.addEventListener('click',()=>setLanguage(lang==='en'?'mni':'en'));
- menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
- nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
- 
- document.getElementById('contactForm').addEventListener('submit',function(e){
-   e.preventDefault();
-   const data=new FormData(this);
-   const subject=encodeURIComponent('Life Launch Coach enquiry: '+data.get('interest'));
-   const body=encodeURIComponent('Name: '+data.get('name')+'\nEmail: '+data.get('email')+'\nInterest: '+data.get('interest')+'\n\nMessage:\n'+data.get('message'));
-   document.getElementById('formMessage').textContent='Opening your email app...';
-   window.location.href='mailto:chingkheinganbairengbam573@gmail.com?subject='+subject+'&body='+body;
- });
- 
- const phone='919383107798';
- const wa=document.getElementById('waLink');
- wa.href=/^\d{10,15}$/.test(phone)?'https://wa.me/'+phone+'?text='+encodeURIComponent('Hello Life Launch Coach, I would like to know more.'): '#contact';
- 
- window.scrollToContact = function(){
-   document.getElementById('contact').scrollIntoView({behavior:'smooth'});
- };
-})();
-</script>
+          <article class="pricing-card">
+            <span class="pill">Premium</span>
+            <h3>Premium</h3>
+            <div class="price-tag">₹9,999 <small>/ month</small></div>
+            <ul>
+              <li>Everything in Exclusive</li>
+              <li>Digital product 2.0 worth ₹5,000</li>
+              <li>Resell rights product bundles</li>
+              <li>Instagram growth strategy</li>
+              <li>YouTube / thumbnail bundles</li>
+              <li>AI prompts sheet worth ₹5,000</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact">Choose Premium</a>
+          </article>
+
+          <article class="pricing-card">
+            <span class="pill">Gold</span>
+            <h3>Gold</h3>
+            <div class="price-tag">₹14,000 <small>/ month</small></div>
+            <ul>
+              <li>Everything in Premium</li>
+              <li>Full business guideline roadmap</li>
+              <li>E-book bundles worth ₹10,000</li>
+              <li>Mentor partnership access</li>
+              <li>Advanced strategic support</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact">Get Gold</a>
+          </article>
+        </div>
+
+        <div class="section-head center" style="margin-top: 28px;">
+          <div class="eyebrow">Coming soon</div>
+          <h2>Full Access Package</h2>
+        </div>
+
+        <div class="cta-box" style="margin-top: 20px;">
+          <div class="eyebrow">Behind the scenes</div>
+          <h2>₹20,000 / month</h2>
+          <p>Coming Soon. Built for serious learners, business-minded clients, and people who want deeper access and premium support.</p>
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="btn btn-gold" href="#contact">Join Waiting List</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="heritage">
+      <div class="wrap">
+        <div class="section-head center">
+          <div class="eyebrow">Rooted in culture</div>
+          <h2>Meitei heritage, wellness, and personal growth</h2>
+        </div>
+
+        <div class="stone-grid">
+          <div class="stone-card">
+            <div class="gem">🔴</div>
+            <h3>Ruby</h3>
+            <p>Power, courage, and prosperity.</p>
+          </div>
+          <div class="stone-card">
+            <div class="gem">💜</div>
+            <h3>Amethyst</h3>
+            <p>Calmness, clarity, and spiritual balance.</p>
+          </div>
+          <div class="stone-card">
+            <div class="gem">💙</div>
+            <h3>Blue Sapphire</h3>
+            <p>Wisdom, focus, and protection.</p>
+          </div>
+          <div class="stone-card">
+            <div class="gem">🐱</div>
+            <h3>Cat Eye</h3>
+            <p>Intuition, protection, and deeper awareness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="library">
+      <div class="wrap">
+        <div class="section-head center">
+          <div class="eyebrow">Digital library</div>
+          <h2>Knowledge that helps you grow</h2>
+        </div>
+
+        <div class="featured-grid">
+          <article class="info-card">
+            <div class="card-icon">📘</div>
+            <h3>Health Guides</h3>
+            <p>Simple practical learning for better body awareness and daily wellness habits.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-icon">📗</div>
+            <h3>Career &amp; Wealth Books</h3>
+            <p>Actionable reading for career clarity, work discipline, and financial understanding.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-icon">📙</div>
+            <h3>Mindset Tools</h3>
+            <p>Behaviour frameworks that help you improve focus, confidence, and calm decisions.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-icon">📕</div>
+            <h3>Heritage Resources</h3>
+            <p>Culture-based learning that connects identity, traditions, and modern growth.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="community">
+      <div class="wrap">
+        <div class="section-head center">
+          <div class="eyebrow">Build together</div>
+          <h2>Community and mentorship that keeps you moving</h2>
+        </div>
+
+        <div class="card-grid three-col">
+          <article class="info-card">
+            <div class="card-icon">🤝</div>
+            <h3>Mentorship</h3>
+            <p>Stay supported by learning from someone who understands your goals, stage, and growth path.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-icon">📈</div>
+            <h3>Learning Accountability</h3>
+            <p>Build discipline, consistency, and a clear game plan for long-term progress.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-icon">🌱</div>
+            <h3>Shared Growth</h3>
+            <p>Join a network of learners, professionals, and dreamers who want to grow with purpose.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap contact-layout">
+        <div class="contact-copy">
+          <div class="eyebrow">Let’s build your next chapter</div>
+          <h1>Book a consultation and start your growth plan.</h1>
+          <p class="lead">Tell us about your goals, your current stage, and the package you are interested in. We will follow up by email or WhatsApp to guide your next step.</p>
+
+          <div class="contact-points">
+            <div class="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:chingkheinganbairengbam573@gmail.com">chingkheinganbairengbam573@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/919383107798?text=Hello%20Life%20Launch%20Coach%2C%20I%20want%20to%20learn%20more%20about%20your%20offers." target="_blank" rel="noreferrer">+91 93831 07798</a>
+            </div>
+            <div class="contact-item">
+              <strong>Payment options</strong>
+              <p>Google Pay, PayPal, Razorpay, and direct bank transfer with WhatsApp confirmation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Client Details Form</h3>
+          <form id="clientForm">
+            <div class="form-grid">
+              <label>
+                Full Name
+                <input type="text" name="name" placeholder="Your full name" required>
+              </label>
+
+              <label>
+                Email Address
+                <input type="email" name="email" placeholder="you@example.com" required>
+              </label>
+
+              <label>
+                WhatsApp Number
+                <input type="tel" name="whatsapp" placeholder="+91 98xxxxxx" required>
+              </label>
+
+              <label>
+                Age
+                <input type="number" name="age" min="13" max="100" placeholder="Age" required>
+              </label>
+
+              <label>
+                Date of Birth
+                <input type="date" name="dob" required>
+              </label>
+
+              <label>
+                Job Type
+                <select name="jobType" required>
+                  <option value="">Select</option>
+                  <option>Student</option>
+                  <option>Working Professional</option>
+                  <option>Freelancer</option>
+                  <option>Business Owner</option>
+                  <option>Other</option>
+                </select>
+              </label>
+
+              <label>
+                Qualification
+                <select name="qualification" required>
+                  <option value="">Select</option>
+                  <option>10th Pass</option>
+                  <option>12th Pass</option>
+                  <option>Graduation</option>
+                  <option>Master's Degree</option>
+                  <option>Other</option>
+                </select>
+              </label>
+
+              <label>
+                Interested Package
+                <select name="package" required>
+                  <option value="">Select</option>
+                  <option>Starter</option>
+                  <option>Pro</option>
+                  <option>Exclusive</option>
+                  <option>Premium</option>
+                  <option>Gold</option>
+                  <option>Full Access (Coming Soon)</option>
+                </select>
+              </label>
+
+              <label>
+                Digital Product / Marketing Experience
+                <select name="experience" required>
+                  <option value="">Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Learning</option>
+                </select>
+              </label>
+
+              <label class="full-width">
+                Message / Goal
+                <textarea name="message" rows="4" placeholder="Tell us what you want to improve, learn, or build."></textarea>
+              </label>
+            </div>
+
+            <button class="btn btn-gold full-width-btn" type="submit">Submit My Details</button>
+            <p id="formStatus" class="form-status">Your details will be stored securely in your browser and prepared for email follow-up.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-head center">
+          <div class="eyebrow">Payment options</div>
+          <h2>Choose your payment method</h2>
+        </div>
+
+        <div class="payment-grid">
+          <a class="payment-card" href="https://pay.google.com/" target="_blank" rel="noreferrer">
+            <span class="payment-icon">G</span>
+            <strong>Google Pay</strong>
+            <small>UPI payment for quick transfer</small>
+          </a>
+
+          <a class="payment-card" href="https://www.paypal.com/in/home" target="_blank" rel="noreferrer">
+            <span class="payment-icon">P</span>
+            <strong>PayPal</strong>
+            <small>International payment option</small>
+          </a>
+
+          <a class="payment-card" href="https://razorpay.com/" target="_blank" rel="noreferrer">
+            <span class="payment-icon">R</span>
+            <strong>Razorpay</strong>
+            <small>Indian payment gateway</small>
+          </a>
+
+          <a class="payment-card" href="https://wa.me/919383107798?text=Hello%20Life%20Launch%20Coach%2C%20I%20want%20to%20confirm%20my%20bank%20transfer%20and%20WhatsApp%20confirmation." target="_blank" rel="noreferrer">
+            <span class="payment-icon">₹</span>
+            <strong>Bank Transfer</strong>
+            <small>Send proof via WhatsApp confirmation</small>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="#home" aria-label="Life Launch Coach home">
+          <span class="brand-mark">LL</span>
+          <span class="brand-text">
+            <strong>LIFE LAUNCH COACH</strong>
+            <small>LEARN · APPLY · GROW</small>
+          </span>
+        </a>
+        <p>Building wiser habits, stronger direction, and purposeful growth.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#paths">Learning Paths</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#heritage">Heritage</a>
+        <a href="#community">Community</a>
+      </div>
+
+      <div>
+        <h4>Resources</h4>
+        <a href="#library">Library</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:chingkheinganbairengbam573@gmail.com">Email</a>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:chingkheinganbairengbam573@gmail.com">Email</a>
+        <a href="https://wa.me/919383107798?text=Hello%20Life%20Launch%20Coach" target="_blank" rel="noreferrer">WhatsApp</a>
+        <p>© 2026 Life Launch Coach</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('clientForm');
+      const status = document.getElementById('formStatus');
+      const storageKey = 'life-launch-coach-client-details';
+
+      if (form) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const formData = Object.fromEntries(new FormData(form).entries());
+          const existing = JSON.parse(localStorage.getItem(storageKey) || '[]');
+          existing.unshift({ ...formData, submittedAt: new Date().toISOString() });
+          localStorage.setItem(storageKey, JSON.stringify(existing));
+
+          const emailBody = [
+            'Name: ' + formData.name,
+            'Email: ' + formData.email,
+            'WhatsApp Number: ' + formData.whatsapp,
+            'Age: ' + formData.age,
+            'Date of Birth: ' + formData.dob,
+            'Job Type: ' + formData.jobType,
+            'Qualification: ' + formData.qualification,
+            'Interested Package: ' + formData.package,
+            'Digital Product / Marketing Experience: ' + formData.experience,
+            '',
+            'Message / Goal:',
+            formData.message || 'No message provided.'
+          ].join('\n');
+
+          status.textContent = 'Your details were saved locally and a message draft has been opened for email follow-up.';
+          const subject = encodeURIComponent('Life Launch Coach enquiry: ' + formData.name);
+          window.location.href = 'mailto:chingkheinganbairengbam573@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(emailBody);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
